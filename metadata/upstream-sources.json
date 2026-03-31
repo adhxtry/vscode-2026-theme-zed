@@ -1,0 +1,45 @@
+{
+  "sourceBase": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes",
+  "sources": [
+    {
+      "path": "2026-dark.json",
+      "sha256": "51b8cf59db3599ca0c01546abf8ecf7d517a2ac0f5e2778ee4c5a9be60091b89",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/2026-dark.json"
+    },
+    {
+      "path": "2026-light.json",
+      "sha256": "50c6e11e866f5535cb28b47a77ff544feb14521afbfbbc976a2e51ddde228ead",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/2026-light.json"
+    },
+    {
+      "path": "dark_modern.json",
+      "sha256": "7b0c9192ddb9c2208c24ceb118673645abbc87e8afabfb56c1ddff159ce73265",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/dark_modern.json"
+    },
+    {
+      "path": "dark_plus.json",
+      "sha256": "409f33088a5cfd6589384900ef80627787c568d367c25b12f31bc7940936e573",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/dark_plus.json"
+    },
+    {
+      "path": "dark_vs.json",
+      "sha256": "d06ed1c90b0a41bf951005c0f43e9f89862021ed16bd6f6fe1f0f962b85b48f1",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/dark_vs.json"
+    },
+    {
+      "path": "light_modern.json",
+      "sha256": "1c3e5b04725e96d3e216b5d7244fe3251b9fc9877b38cc223789b0bfaac593ed",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/light_modern.json"
+    },
+    {
+      "path": "light_plus.json",
+      "sha256": "26fbb053bec8ce2b65706d5fcb993da8c19174cfdbf35a49b465236b5ed26203",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/light_plus.json"
+    },
+    {
+      "path": "light_vs.json",
+      "sha256": "524b228861625755632a545e321476983077f5c8788f70b8c0fe42992b314cdd",
+      "url": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/theme-defaults/themes/light_vs.json"
+    }
+  ]
+}

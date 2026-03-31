@@ -1,0 +1,67 @@
+name: Update VS Code 2026 Themes
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate resolved and Zed themes
+        run: npm run generate
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump patch version
+        if: steps.changes.outputs.has_changes == 'true'
+        run: npm run bump:patch
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: refresh VS Code 2026 theme port"
+          branch: "automation/update-vscode-2026-themes"
+          delete-branch: true
+          title: "chore: refresh VS Code 2026 theme port"
+          body: |
+            Automated update from upstream VS Code theme sources.
+
+            Regenerated artifacts:
+            - themes/vscode-2026-port-theme.json
+            - generated/vscode/2026-dark.resolved.json
+            - generated/vscode/2026-light.resolved.json
+            - metadata/upstream-sources.json
+            - extension.toml (patch version bump)
+          labels: |
+            automation
+            themes
+          add-paths: |
+            themes/vscode-2026-port-theme.json
+            generated/vscode/2026-dark.resolved.json
+            generated/vscode/2026-light.resolved.json
+            metadata/upstream-sources.json
+            extension.toml
