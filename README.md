@@ -4,7 +4,12 @@ This repository contains a publishable Zed theme extension that ports VS Code's 
 
 Generated themes:
 - VS Code 2026 Dark
+
+![VS Code 2026 Dark](./imgs/vscode-2026-dark.png)
+
 - VS Code 2026 Light
+
+![VS Code 2026 Light](./imgs/vscode-2026-light.png)
 
 ## How It Works
 
@@ -43,14 +48,3 @@ Behavior:
 - Fetches upstream VS Code theme sources.
 - Regenerates resolved + Zed outputs.
 - Opens/updates a PR only when generated files changed.
-
-## Publishability Notes
-
-This repository includes:
-- `extension.toml` manifest
-- `themes/` directory
-- `LICENSE` (MIT)
-
-Before publishing, update:
-- `repository` in extension.toml
-- `authors` in extension.toml
