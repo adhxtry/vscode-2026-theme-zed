@@ -53,6 +53,15 @@ const SCOPE_TO_SYNTAX = [
     ],
     key: "attribute"
   },
+  {
+    needles: [
+      "support.type.property-name.json",
+      "support.type.property-name",
+      "meta.property-name",
+      "entity.other.attribute-name"
+    ],
+    key: "property"
+  },
   { needles: ["support.type", "entity.name.type", "storage.type"], key: "type" },
   {
     needles: [
@@ -78,7 +87,7 @@ const SCOPE_TO_SYNTAX = [
   { needles: ["entity.name.label"], key: "label" }
 ];
 
-const SEMANTIC_TO_SYNTAX = {
+const SEMANTIC_FALLBACK_TO_SYNTAX = {
   newOperator: "operator",
   stringLiteral: "string",
   customLiteral: "constant",
@@ -516,18 +525,23 @@ function buildSyntax(theme) {
     syntax[syntaxKey] = { ...entry.style };
   }
 
-  for (const [semanticKey, syntaxKey] of Object.entries(SEMANTIC_TO_SYNTAX)) {
-    const semanticValue = theme.semanticTokenColors?.[semanticKey];
+  for (const [semanticSelector, semanticValue] of Object.entries(theme.semanticTokenColors || {})) {
     const style = toSemanticHighlightStyle(semanticValue);
     if (Object.keys(style).length === 0) {
       continue;
     }
 
-    if (syntax[syntaxKey]) {
-      continue;
-    }
+    // Preserve semantic selectors one-to-one so Zed can apply them directly.
+    syntax[semanticSelector] = {
+      ...(syntax[semanticSelector] || {}),
+      ...style
+    };
 
-    syntax[syntaxKey] = style;
+    // Keep compatibility aliases for a few known VS Code selectors.
+    const fallbackSyntaxKey = SEMANTIC_FALLBACK_TO_SYNTAX[semanticSelector];
+    if (fallbackSyntaxKey && !syntax[fallbackSyntaxKey]) {
+      syntax[fallbackSyntaxKey] = { ...style };
+    }
   }
 
   if (!syntax.primary) {
@@ -535,6 +549,10 @@ function buildSyntax(theme) {
     if (fallback) {
       syntax.primary = { color: fallback };
     }
+  }
+
+  if (!syntax.property && syntax.attribute) {
+    syntax.property = { ...syntax.attribute };
   }
 
   return sortObjectDeep(syntax);

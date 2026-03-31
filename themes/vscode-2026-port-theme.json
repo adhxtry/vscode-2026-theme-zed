@@ -147,6 +147,9 @@
           "constant": {
             "color": "#c9d1d9"
           },
+          "customLiteral": {
+            "color": "#dcdcaa"
+          },
           "emphasis": {
             "color": "#c9d1d9",
             "font_style": "italic"
@@ -167,7 +170,13 @@
           "namespace": {
             "color": "#4ec9b0"
           },
+          "newOperator": {
+            "color": "#c586c0"
+          },
           "number": {
+            "color": "#b5cea8"
+          },
+          "numberLiteral": {
             "color": "#b5cea8"
           },
           "operator": {
@@ -178,6 +187,9 @@
           },
           "primary": {
             "color": "#bbbebf"
+          },
+          "property": {
+            "color": "#7ee787"
           },
           "punctuation": {
             "color": "#ffa657"
@@ -196,6 +208,9 @@
           },
           "string.regex": {
             "color": "#a5d6ff"
+          },
+          "stringLiteral": {
+            "color": "#ce9178"
           },
           "tag": {
             "color": "#7ee787"
@@ -405,6 +420,9 @@
           "constant": {
             "color": "#1f2328"
           },
+          "customLiteral": {
+            "color": "#795e26"
+          },
           "emphasis": {
             "color": "#1f2328",
             "font_style": "italic"
@@ -425,7 +443,13 @@
           "namespace": {
             "color": "#267f99"
           },
+          "newOperator": {
+            "color": "#af00db"
+          },
           "number": {
+            "color": "#098658"
+          },
+          "numberLiteral": {
             "color": "#098658"
           },
           "operator": {
@@ -436,6 +460,9 @@
           },
           "primary": {
             "color": "#202020"
+          },
+          "property": {
+            "color": "#116329"
           },
           "punctuation": {
             "color": "#953800"
@@ -454,6 +481,9 @@
           },
           "string.regex": {
             "color": "#0a3069"
+          },
+          "stringLiteral": {
+            "color": "#a31515"
           },
           "tag": {
             "color": "#116329"
