@@ -285,6 +285,7 @@ function buildZedStyle(theme) {
   };
 
   set("background", pick("sideBar.background", "panel.background", "editor.background"));
+  set("background.appearance", "opaque");
   set("surface.background", pick("panel.background", "editorGroupHeader.tabsBackground", "sideBar.background"));
   set("elevated_surface.background", pick("editorWidget.background", "quickInput.background", "menu.background"));
   set("panel.background", pick("panel.background", "sideBar.background"));
@@ -377,9 +378,20 @@ function buildZedStyle(theme) {
   set("terminal.ansi.bright_cyan", pick("terminal.ansiBrightCyan", "charts.blue", "gauge.foreground"));
   set("terminal.ansi.bright_white", pick("terminal.ansiBrightWhite", "button.foreground", "foreground"));
 
+  // Ignored entries in Zed rely on status `ignored`; prefer disabled foreground for stronger dimming.
+  const ignoredForeground = pick(
+    "disabledForeground",
+    "gitDecoration.ignoredResourceForeground",
+    "descriptionForeground",
+    "tab.unfocusedInactiveForeground"
+  );
+
   set("version_control.added", pick("gitDecoration.addedResourceForeground", "editorOverviewRuler.addedForeground"));
   set("version_control.modified", pick("gitDecoration.modifiedResourceForeground", "editorOverviewRuler.modifiedForeground"));
   set("version_control.deleted", pick("gitDecoration.deletedResourceForeground", "editorOverviewRuler.deletedForeground"));
+  set("version_control.renamed", pick("textLink.foreground", "list.highlightForeground"));
+  set("version_control.conflict", pick("gitDecoration.conflictingResourceForeground", "activityErrorBadge.background"));
+  set("version_control.ignored", ignoredForeground);
   set("version_control.word_added", pick("diffEditor.insertedTextBackground"));
   set("version_control.word_deleted", pick("diffEditor.removedTextBackground"));
   set("version_control.conflict_marker.ours", pick("diffEditor.insertedLineBackground"));
@@ -401,7 +413,7 @@ function buildZedStyle(theme) {
   set("error.background", pick("inputValidation.errorBackground", "gauge.errorBackground"));
   set("error.border", pick("inputValidation.errorBorder", "panel.border"));
 
-  set("hidden", pick("disabledForeground", "tab.unfocusedInactiveForeground"));
+  set("hidden", ignoredForeground);
   set("hidden.background", pick("tab.unfocusedInactiveBackground", "panel.background"));
   set("hidden.border", pick("tab.border", "panel.border"));
 
@@ -409,7 +421,7 @@ function buildZedStyle(theme) {
   set("hint.background", pick("inputValidation.infoBackground", "chat.slashCommandBackground"));
   set("hint.border", pick("inputValidation.infoBorder", "focusBorder"));
 
-  set("ignored", pick("gitDecoration.ignoredResourceForeground", "disabledForeground"));
+  set("ignored", ignoredForeground);
   set("ignored.background", pick("tab.unfocusedInactiveBackground", "panel.background"));
   set("ignored.border", pick("panel.border", "tab.border"));
 
