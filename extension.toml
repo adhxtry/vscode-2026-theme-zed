@@ -1,6 +1,6 @@
 id = "vscode-2026-port-theme"
 name = "VS Code 2026 Themes"
-version = "0.1.1"
+version = "0.1.2"
 schema_version = 1
 authors = ["Adheesh Trivedi <adheeshtrivedi@gmail.com>"]
 description = "Port of VS Code 2026 Dark and Light themes to Zed"
